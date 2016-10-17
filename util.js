@@ -9,7 +9,7 @@ var obj = {
                  element.attachEvent("on" + type, handler); 
              }else{element["on" + type] = handler;}
 			 },
-	 toFixed:function(num, s) {                        //00003
+	toFixed:function(num, s) {                        //00003
           var tempnum = num.toFixed(s+4);
 	 	  return Number(Math.round(tempnum+'e'+s)+'e-'+s);
           },
@@ -22,7 +22,21 @@ var obj = {
 		var e = event || window.event;
 		if (e && e.preventDefault) e.preventDefault(); 
 		else returnValue = false;
-	}  	 
+	},
+	debounce:function(func, wait, immediate) {
+    var timeout;
+    return function() {
+        var context = this, args = arguments;
+        var later = function() {
+            timeout = null;
+            if (!immediate) func.apply(context, args);
+        };
+        var callNow = immediate && !timeout;
+        clearTimeout(timeout);
+        timeout = setTimeout(later, wait);
+        if (callNow) func.apply(context, args);
+    }
+};		
 }
 
 window.tools = obj;
