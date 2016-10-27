@@ -1,5 +1,6 @@
 /*var el=document.getElementById("test"); 
 console.log(getCurrentStyle(el,["background","color","width"]));*/
+//https://rawgit.com/jianyeruan80/2016/master/test.js
 function getCurrentStyle(el,attr){
 var style={};
 var returnStyle={};
